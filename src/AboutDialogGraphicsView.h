@@ -20,6 +20,7 @@
 #define ABOUTDIALOGGRAPHICSVIEW_H
 
 #include <QGraphicsView>
+#include <QGraphicsProxyWidget>
 
 class AboutDialog;
 

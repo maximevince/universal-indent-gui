@@ -99,7 +99,7 @@ TSLogger::TSLogger(int verboseLevel) : QDialog() {
 
     Only messages whos \a type have a higher priority than the set verbose level are logged.
  */
-void TSLogger::messageHandler(QtMsgType type, const char *msg) {
+void TSLogger::messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
     if ( _instance == NULL )
         _instance = TSLogger::getInstance();
 
@@ -139,7 +139,7 @@ void TSLogger::messageHandler(QtMsgType type, const char *msg) {
     }
 
     // Append the to UTF-8 back converted message parameter.
-    message += QString::fromUtf8( msg ) + "<br/>\n";
+    message += msg + "<br/>\n";
 
     // Write the message to the log windows text edit.
     _instance->_TSLoggerDialogForm->logTextEdit->append( message );

@@ -1,6 +1,9 @@
 TEMPLATE = app
 QT += network
 QT += script
+QT += widgets
+QT += printsupport
+
 
 unix:TARGET = universalindentgui
 win32:TARGET = UniversalIndentGUI
@@ -18,12 +21,12 @@ CONFIG += debug_and_release
 macx {
  # If using as framework qscintilla needs to be build with:
  # qmake -spec macx-g++ CONFIG+=sdk CONFIG+=x86_64 CONFIG+=x86 CONFIG+=lib_bundle qscintilla.pro && make && sudo make install
- #LIBS += -framework qscintilla2
- LIBS += -lqscintilla2
+ #LIBS += -framework qscintilla2_qt5
+ LIBS += -lqscintilla2_qt5
  ICON = resources/UniversalIndentGUI.icns
 }
 else {
- LIBS += -lqscintilla2
+ LIBS += -lqscintilla2_qt5
 }
 
 CONFIG(release, debug|release) {
@@ -37,10 +40,10 @@ macx:pipe2nul = "&> /dev/null"
 ##########################
 message(Updating language files)
 lupdate = lupdate
-unix:lupdate = lupdate-qt4
+unix:lupdate = lupdate-qt5
 macx:lupdate = lupdate
 lrelease = lrelease
-unix:lrelease = lrelease-qt4
+unix:lrelease = lrelease-qt5
 macx:lrelease = lrelease
 # Update translation files
 message ( Updating universalindent.ts )

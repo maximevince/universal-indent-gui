@@ -38,7 +38,8 @@ class TSLogger : public QDialog
 public:
     static TSLogger* getInstance(int verboseLevel);
     static TSLogger* getInstance();
-    static void messageHandler(QtMsgType type, const char *msg);
+    //qt4 signature: static void messageHandler(QtMsgType type, const char *msg);
+    static void messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg);
     static void deleteInstance();
     void setVerboseLevel(int level);
 
